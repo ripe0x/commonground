@@ -77,17 +77,17 @@ async function resolveTokenPage(handle: string, tokenId: string) {
       chainId: token.chainId,
       auction: auction
         ? {
-            auctionId: BigInt(auction.id),
+            auctionId: auction.id,
             seller: auction.seller,
-            reservePrice: BigInt(auction.reservePrice),
-            highestBid: BigInt(auction.highestBid),
+            reservePrice: auction.reservePrice,
+            highestBid: auction.highestBid,
             highestBidder: auction.highestBidder ?? "",
             endTime: Number(auction.endTime),
             status: auction.status as "live" | "settled" | "available",
           }
         : undefined,
       buyNow: listing
-        ? { seller: listing.seller, price: BigInt(listing.price) }
+        ? { seller: listing.seller, price: listing.price }
         : undefined,
       bids: bids.map(
         (b): BidEntry => ({

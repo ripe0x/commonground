@@ -15,10 +15,10 @@ import { CountdownTimer } from "./CountdownTimer"
 import { StatusBadge } from "./StatusBadge"
 
 type AuctionData = {
-  auctionId: bigint
+  auctionId: string
   seller: string
-  reservePrice: bigint
-  highestBid: bigint
+  reservePrice: string
+  highestBid: string
   highestBidder: string
   endTime: number
   status: "live" | "settled" | "available"
@@ -26,7 +26,7 @@ type AuctionData = {
 
 type BuyNowData = {
   seller: string
-  price: bigint
+  price: string
 }
 
 type TokenPageData = {
@@ -38,8 +38,21 @@ type TokenPageData = {
 }
 
 export function BidPanel({ data }: { data: TokenPageData }) {
-  const { auction, buyNow, contract, tokenId } = data
+  const { contract, tokenId } = data
   const chainId = data.chainId ?? MAINNET_CHAIN_ID
+
+  // Parse string props back to BigInt (strings are used for RSC serialization)
+  const auction = data.auction
+    ? {
+        ...data.auction,
+        auctionId: BigInt(data.auction.auctionId),
+        reservePrice: BigInt(data.auction.reservePrice),
+        highestBid: BigInt(data.auction.highestBid),
+      }
+    : undefined
+  const buyNow = data.buyNow
+    ? { ...data.buyNow, price: BigInt(data.buyNow.price) }
+    : undefined
   const { address, isConnected } = useAccount()
   const { openConnectModal } = useConnectModal()
   const [bidAmount, setBidAmount] = useState("")
