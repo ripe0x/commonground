@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { SITE_TITLE } from "@commonground/shared"
 import { ArtworkGrid } from "@/components/ArtworkGrid"
+import type { ArtworkCardData } from "@/components/ArtworkCard"
 import { getCreatorTokens } from "@/lib/queries"
 
 type Params = Promise<{ handle: string }>
@@ -28,7 +29,7 @@ export default async function CreatorPage({
   const isAddress = handle.startsWith("0x") && handle.length === 42
   const address = isAddress ? handle : ""
 
-  let works
+  let works: ArtworkCardData[] = []
   try {
     works = address ? await getCreatorTokens(address) : []
   } catch {
