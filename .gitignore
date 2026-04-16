@@ -1,0 +1,20 @@
+node_modules
+.next
+.ponder
+out
+dist
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+
+# IDE / tooling
+.claude/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Generated
+apps/indexer/generated/
