@@ -1,0 +1,17 @@
+node_modules
+.next
+.ponder
+.git
+.claude
+.vscode
+.idea
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+apps/web/src
+apps/web/.next
+apps/web/node_modules
+apps/indexer/generated
+.netlify

@@ -18,3 +18,6 @@ dist
 
 # Generated
 apps/indexer/generated/
+
+# Local Netlify folder
+.netlify
