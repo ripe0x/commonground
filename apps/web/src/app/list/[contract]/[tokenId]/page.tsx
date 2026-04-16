@@ -102,9 +102,13 @@ export default function ListPage() {
   }
 
   function handleList() {
-    const sim = listingType === "auction" ? simAuction : simBuyNow
-    if (!sim?.request) return
-    writeListing(sim.request)
+    if (listingType === "auction") {
+      if (!simAuction?.request) return
+      writeListing(simAuction.request)
+    } else {
+      if (!simBuyNow?.request) return
+      writeListing(simBuyNow.request)
+    }
   }
 
   if (!isConnected) {
