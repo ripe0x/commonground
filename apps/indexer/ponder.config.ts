@@ -13,9 +13,9 @@ import { erc721Abi } from "@commonground/abi"
  *   FoundationNFT: 11_907_800
  */
 
-// ~30 days ago at 12s/block = ~216,000 blocks
-// Current mainnet block is ~22,400,000 (April 2026)
-const RECENT_START_BLOCK = 22_200_000
+// ~7 days ago at 12s/block = ~50,400 blocks
+// Current mainnet block is ~24,890,000 (April 2026)
+const RECENT_START_BLOCK = 24_840_000
 
 export default createConfig({
   networks: {
